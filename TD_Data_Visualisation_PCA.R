@@ -13,3 +13,10 @@ result = mvn(menu[couple_to_test], mvnTest = "mardia", univariateTest = "SW", un
 
 #Test de corrélation linéaire de Pearson
 cor.test(menu$Calories, menu$Total.Fat)
+
+
+#Séparation du Dataframe menu
+donnes_separees <- c("Calories", "Total.Fat", "Cholesterol", "Sodium", "Sugars", "Protein")
+indices <- which(colnames(menu) %in% donnes_separees)
+new_menu <- menu[,indices]
+summary(new_menu)
