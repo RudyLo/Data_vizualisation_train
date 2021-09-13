@@ -40,3 +40,10 @@ m1
 install.packages ("rgl")
 library(rgl)
 plot3d(menu$Calories, menu$Total.Fat,menu$Cholesterol, type="s")
+
+
+#Centrer les données avec scale et les réduire
+list <- c("Calories", "Total.Fat", "Cholesterol")
+menu.cr <- scale(menu[, list])
+lims <- c(min(menu.cr),max(menu.cr))
+plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
