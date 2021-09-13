@@ -62,4 +62,8 @@ plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
 #Représentation de l'ellispe de concentration
 menu.cr_df <- as.data.frame(menu.cr)
 plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
-plot3d(ellipse3d(cor(cbind(menu.cr_df$Sodium, menu.cr_df$Sugars,menu.cr_df$Protein))), col="grey",add=TRUE)
+plot3d(ellipse3d(cor(cbind(menu.cr_df$Sodium, menu.cr_df$Sugars,menu.cr_df$Protein))), col="grey",add=TRUE)7
+
+#Installation du package ade4 pour réaliser l'ACP
+install.packages("ade4")
+library("ade4")
