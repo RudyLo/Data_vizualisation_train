@@ -67,3 +67,8 @@ plot3d(ellipse3d(cor(cbind(menu.cr_df$Sodium, menu.cr_df$Sugars,menu.cr_df$Prote
 #Installation du package ade4 pour réaliser l'ACP
 install.packages("ade4")
 library("ade4")
+
+#Utilisation de dudi.pca pour réaliser l'ACP
+list <- c("Calories","Total.Fat","Cholesterol")
+acp <- dudi.pca(menu[, list], center=TRUE, scale=TRUE, scannf = FALSE, nf = 3)
+names(acp)
