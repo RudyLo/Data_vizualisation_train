@@ -20,3 +20,17 @@ donnes_separees <- c("Calories", "Total.Fat", "Cholesterol", "Sodium", "Sugars",
 indices <- which(colnames(menu) %in% donnes_separees)
 new_menu <- menu[,indices]
 summary(new_menu)
+
+#Affichage de la matrice de corrélation
+correlation_mat <- cor(new_menu)
+
+da <- c("Calories", "Total.Fat","Cholesterol","Sodium","Sugars","Protein")
+m1 <- matrix(nrow = 6, ncol = 6)
+dimnames(m1) <- list(da, da)
+m1
+
+#Remplissage de la matrice de corrélation
+for (i in 0:36) {
+  m1[i] <- correlation_mat[i]
+}
+m1
