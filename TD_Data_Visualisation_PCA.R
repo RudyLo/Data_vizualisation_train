@@ -34,3 +34,9 @@ for (i in 0:36) {
   m1[i] <- correlation_mat[i]
 }
 m1
+
+
+## Representation en 3D des trois variables : Calories, Total.Fat, Cholesterol
+install.packages ("rgl")
+library(rgl)
+plot3d(menu$Calories, menu$Total.Fat,menu$Cholesterol, type="s")
