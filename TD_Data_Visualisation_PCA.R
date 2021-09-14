@@ -86,3 +86,11 @@ round(acp$co,2)
 
 #Cercle des corrélations linéaires
 s.corcircle(acp$co, xax=1, yax=2)
+
+#Représentation des individus sur le premier plan
+
+s.label(acp$li, xax = 1, yax = 2)
+
+#Affichage de l'item
+
+s.label(acp$li, xax = 1, yax = 2, label=as.character(menu$Item), clabel=1.5)
