@@ -74,3 +74,15 @@ head(acp$tab)
 pve <- 100*acp$eig/sum(acp$eig)
 pve
 cumsum(pve)
+
+#Analyse des variables 
+#Calcul de l'inertie
+
+inertie <- inertia.dudi(acp, col.inertia=TRUE)
+inertie
+
+#Coordonnées des attributs
+round(acp$co,2)
+
+#Cercle des corrélations linéaires
+s.corcircle(acp$co, xax=1, yax=2)
