@@ -53,16 +53,6 @@ menu.cr_df <- as.data.frame(menu.cr)
 plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
 plot3d(ellipse3d(cor(cbind(menu.cr_df$Calories, menu.cr_df$Total.Fat,menu.cr_df$Cholesterol))), col="grey",add=TRUE)
 
-#Centrer les données avec scale et les réduire
-list <- c("Sodium", "Sugars", "Protein")
-menu.cr <- scale(menu[, list])
-lims <- c(min(menu.cr),max(menu.cr))
-plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
-
-#Représentation de l'ellispe de concentration
-menu.cr_df <- as.data.frame(menu.cr)
-plot3d(menu.cr, type = "s", xlim = lims, ylim = lims,zlim = lims)
-plot3d(ellipse3d(cor(cbind(menu.cr_df$Sodium, menu.cr_df$Sugars,menu.cr_df$Protein))), col="grey",add=TRUE)7
 
 #Installation du package ade4 pour réaliser l'ACP
 install.packages("ade4")
@@ -72,3 +62,15 @@ library("ade4")
 list <- c("Calories","Total.Fat","Cholesterol")
 acp <- dudi.pca(menu[, list], center=TRUE, scale=TRUE, scannf = FALSE, nf = 3)
 names(acp)
+
+#Mise à l'échelle entre le scale et dudi.pca
+var.n <- function(x) sum((x-mean(x))^2)/length(x)
+scale.n <- function(x) (x - mean(x))/sqrt(var.n(x))
+new_menu <- head(apply(menu.cr, 2, scale.n))
+head(new_menu)
+head(acp$tab)
+
+#Mesure de l'inertie totale
+pve <- 100*acp$eig/sum(acp$eig)
+pve
+cumsum(pve)
