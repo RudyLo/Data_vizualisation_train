@@ -94,3 +94,9 @@ s.label(acp$li, xax = 1, yax = 2)
 #Affichage de l'item
 
 s.label(acp$li, xax = 1, yax = 2, label=as.character(menu$Item), clabel=1.5)
+
+#On ajoute une variable qualitative qui définis les individus par exemples
+gcol <- c("red1", "red4","orange")
+s.class(dfxy = acp$li, fac = menu$Category, col = gcol, xax = 1, yax = 2)
+
+scatter(acp)
